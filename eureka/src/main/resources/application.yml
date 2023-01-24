@@ -6,6 +6,11 @@ spring:
         name: eureka-server
 
 eureka:
+  instance:
     client:
-        registerWithEureka: false
-        fetchRegistry: false
+      registerWithEureka: false
+      fetchRegistry: false
+      service-url:
+        defauntZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+
+    hostname: localhost
