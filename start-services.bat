@@ -16,13 +16,13 @@ cd ..
 REM Wait for Eureka to start
 timeout /t 10 /nobreak > nul
 
-REM Start Sample Module
-echo 🔧 Starting Sample Module...
-cd sample-module
-start "Sample Module" cmd /c "gradlew.bat bootRun > ..\logs\sample-module.log 2>&1"
+REM Start Book Store
+echo 📚 Starting Book Store...
+cd book-store
+start "Book Store" cmd /c "gradlew.bat bootRun > ..\logs\book-store.log 2>&1"
 cd ..
 
-REM Wait for Sample Module to start
+REM Wait for Book Store to start
 timeout /t 5 /nobreak > nul
 
 REM Start Sample Service
@@ -39,7 +39,7 @@ echo 🎉 All services started!
 echo.
 echo 📊 Service Status:
 echo    Eureka Server:    http://localhost:8761
-echo    Sample Module:    http://localhost:9000
+echo    Book Store:       http://localhost:9000
 echo    Sample Service:   http://localhost:9001
 echo.
 echo 📝 Logs are available in the logs\ directory

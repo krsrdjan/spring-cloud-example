@@ -1,10 +1,10 @@
-package com.sk.springcloud.samplemodule;
+package com.sk.springcloud.bookstore;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SampleModuleApplicationTests {
+class BookStoreApplicationTests {
 
 	@Test
 	void contextLoads() {

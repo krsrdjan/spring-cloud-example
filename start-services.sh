@@ -44,19 +44,19 @@ else
     exit 1
 fi
 
-# Start Sample Module
-echo "🔧 Starting Sample Module..."
-cd sample-module
-./gradlew bootRun > ../logs/sample-module.log 2>&1 &
-SAMPLE_MODULE_PID=$!
+# Start Book Store
+echo "📚 Starting Book Store..."
+cd book-store
+./gradlew bootRun > ../logs/book-store.log 2>&1 &
+BOOK_STORE_PID=$!
 cd ..
 
-# Wait for Sample Module to be ready
+# Wait for Book Store to be ready
 sleep 3
-if check_service 9000 "Sample Module"; then
-    echo "✅ Sample Module started successfully"
+if check_service 9000 "Book Store"; then
+    echo "✅ Book Store started successfully"
 else
-    echo "❌ Sample Module failed to start"
+    echo "❌ Book Store failed to start"
 fi
 
 # Start Sample Service
@@ -79,7 +79,7 @@ mkdir -p logs
 
 # Save PIDs for cleanup
 echo $EUREKA_PID > logs/eureka.pid
-echo $SAMPLE_MODULE_PID > logs/sample-module.pid
+echo $BOOK_STORE_PID > logs/book-store.pid
 echo $SAMPLE_SERVICE_PID > logs/sample-service.pid
 
 echo ""
@@ -87,7 +87,7 @@ echo "🎉 All services started!"
 echo ""
 echo "📊 Service Status:"
 echo "   Eureka Server:    http://localhost:8761"
-echo "   Sample Module:    http://localhost:9000"
+echo "   Book Store:       http://localhost:9000"
 echo "   Sample Service:   http://localhost:9001"
 echo ""
 echo "📝 Logs are available in the logs/ directory"
@@ -105,9 +105,9 @@ cleanup() {
         rm logs/eureka.pid
     fi
     
-    if [ -f logs/sample-module.pid ]; then
-        kill $(cat logs/sample-module.pid) 2>/dev/null
-        rm logs/sample-module.pid
+    if [ -f logs/book-store.pid ]; then
+        kill $(cat logs/book-store.pid) 2>/dev/null
+        rm logs/book-store.pid
     fi
     
     if [ -f logs/sample-service.pid ]; then

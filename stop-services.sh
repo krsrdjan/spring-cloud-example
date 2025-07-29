@@ -33,7 +33,7 @@ stop_service() {
 
 # Stop all services
 stop_service "logs/eureka.pid" "Eureka Server"
-stop_service "logs/sample-module.pid" "Sample Module"
+stop_service "logs/book-store.pid" "Book Store"
 stop_service "logs/sample-service.pid" "Sample Service"
 
 # Clean up any remaining processes by port
@@ -52,4 +52,4 @@ echo "✅ All services stopped"
 echo "🧹 Cleaning up logs directory..."
 rm -rf logs/
 
-echo "�� Cleanup complete!" 
+echo "🎉 Cleanup complete!" 

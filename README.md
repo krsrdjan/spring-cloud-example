@@ -38,9 +38,9 @@ stop-services.bat
    ```
    Then goto http://localhost:8761 to see the Eureka dashboard.
 
-2. **Start Sample Module:**
+2. **Start Book Store:**
    ```bash
-   cd sample-module
+   cd book-store
    ./gradlew bootRun
    ```
 
@@ -56,7 +56,18 @@ stop-services.bat
   - `GET /api/v1/hello` - Returns "Hello World!"
   - `GET /api/v1/user` - Returns personalized greeting
   - `GET /api/v1/test-broken-service` - Circuit breaker demo
-- **sample-module**: Spring Boot application with security (port 9000)
+- **book-store**: Spring Boot application with H2 database (port 9000)
+  - H2 Console: http://localhost:9000/h2-console
+  - Database: In-memory H2 database
+  - Username: `sa` (default)
+  - Password: (empty)
+  - REST Endpoints:
+    - `GET /api/v1/books` - Get all books
+    - `GET /api/v1/books/{id}` - Get book by ID
+    - `POST /api/v1/books` - Create new book
+    - `PUT /api/v1/books/{id}` - Update book
+    - `DELETE /api/v1/books/{id}` - Delete book
+    - `GET /api/v1/books/health` - Health check
 
 ## Service Discovery
 All modules (except eureka server) are configured to register with the Eureka service discovery server. They will automatically register themselves when started and can be discovered by other services.
