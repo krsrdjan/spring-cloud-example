@@ -7,13 +7,48 @@ Spring cloud microservice repo example
 - **Spring Cloud**: 2023.0.0
 - **Gradle**: 8.5
 
-## Getting Started
-To start Eureka server, run the following command in eureka folder:
+## Quick Start
 
+### Option 1: Using Startup Scripts (Recommended)
+
+#### Linux/Mac:
+```bash
+# Start all services
+./start-services.sh
+
+# Stop all services
+./stop-services.sh
 ```
-./gradlew bootRun
+
+#### Windows:
+```cmd
+# Start all services
+start-services.bat
+
+# Stop all services
+stop-services.bat
 ```
-Then, goto http://localhost:8761 to see the Eureka dashboard.
+
+### Option 2: Manual Startup
+
+1. **Start Eureka Server:**
+   ```bash
+   cd eureka
+   ./gradlew bootRun
+   ```
+   Then goto http://localhost:8761 to see the Eureka dashboard.
+
+2. **Start Sample Module:**
+   ```bash
+   cd sample-module
+   ./gradlew bootRun
+   ```
+
+3. **Start Sample Service:**
+   ```bash
+   cd sample-service
+   ./gradlew bootRun
+   ```
 
 ## Modules
 - **eureka**: Service discovery server (port 8761)
@@ -22,10 +57,12 @@ Then, goto http://localhost:8761 to see the Eureka dashboard.
   - `GET /api/v1/user` - Returns personalized greeting
   - `GET /api/v1/test-broken-service` - Circuit breaker demo
 - **sample-module**: Spring Boot application with security (port 9000)
-- **docker-module**: Docker-ready Spring Boot application (port 8080)
-  - `GET /api/v1/docker` - Returns Docker module info
-  - `GET /health` - Health check endpoint
 
 ## Service Discovery
 All modules (except eureka server) are configured to register with the Eureka service discovery server. They will automatically register themselves when started and can be discovered by other services.
+
+## Scripts
+- `start-services.sh` / `start-services.bat` - Starts all services in the correct order
+- `stop-services.sh` / `stop-services.bat` - Stops all services and cleans up
+- Logs are saved in the `logs/` directory when using the startup scripts
 
